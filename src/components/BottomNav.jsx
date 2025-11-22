@@ -6,7 +6,6 @@ export default function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white shadow-lg border-t sm:hidden">
       <div className="flex justify-around py-2">
-
         {/* Home */}
         <NavLink
           to="/home"
@@ -27,7 +26,7 @@ export default function BottomNav() {
 
         {/* AI Learn */}
         <NavLink
-          to="/ai"
+          to="/ai-learn"
           className="flex flex-col items-center text-gray-600 hover:text-purple-600"
         >
           <Brain size={22} />
