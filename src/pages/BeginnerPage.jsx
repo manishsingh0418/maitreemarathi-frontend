@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import axios from "axios";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function BeginnerPage() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function BeginnerPage() {
   const fetchLevelStatus = async () => {
     try {
       console.log("Fetching level status for phone:", phone);
-      const res = await axios.get(`http://localhost:5000/api/user/level-status/${phone}`);
+      const res = await axios.get(API_ENDPOINTS.USER_LEVEL_STATUS(phone));
       console.log("Level status response:", res.data);
       if (res.data.status === "success") {
         setLevelStatus(res.data.levelStatus);

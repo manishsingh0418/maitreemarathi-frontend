@@ -83,6 +83,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DashboardLayout from "../layout/DashboardLayout";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function WalletPage() {
   const [balance, setBalance] = useState(0);
@@ -100,7 +101,7 @@ export default function WalletPage() {
 
   const fetchRedemptions = async (phone) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user/redemptions/${phone}`);
+      const res = await axios.get(API_ENDPOINTS.USER_REDEMPTIONS(phone));
       if (res.data.status === "success") {
         setRedemptions(res.data.redemptions);
       }
@@ -124,7 +125,7 @@ export default function WalletPage() {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/user/request-redemption", {
+      const res = await axios.post(API_ENDPOINTS.USER_REQUEST_REDEMPTION, {
         phone: user.phone,
         amount: parseInt(amount)
       });

@@ -81,7 +81,7 @@ export default function AdminDashboard() {
 
   const fetchRedemptions = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/redemptions");
+      const res = await axios.get(API_ENDPOINTS.ADMIN_REDEMPTIONS);
       if (res.data.status === "success") {
         setRedemptions(res.data.redemptions);
       }
@@ -252,7 +252,7 @@ export default function AdminDashboard() {
   const updateRedemptionStatus = async (redemptionId, newStatus) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/admin/redemptions/${redemptionId}/status`,
+        API_ENDPOINTS.ADMIN_UPDATE_REDEMPTION_STATUS(redemptionId),
         { status: newStatus }
       );
       if (res.data.status === "success") {
@@ -274,7 +274,7 @@ export default function AdminDashboard() {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/admin/users/${userId}/wallet`,
+        API_ENDPOINTS.ADMIN_UPDATE_WALLET(userId),
         { wallet: parseInt(newWalletAmount) }
       );
       if (res.data.status === "success") {

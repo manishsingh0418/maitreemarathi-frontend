@@ -114,6 +114,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { ArrowLeft } from "lucide-react";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -138,7 +139,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/register", {
+      const res = await axios.post(API_ENDPOINTS.REGISTER, {
         name,
         phone,
         password,

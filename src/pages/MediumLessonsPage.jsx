@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import axios from "axios";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function MediumLessonsPage() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function MediumLessonsPage() {
 
   const checkUnlockStatus = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user/level-status/${phone}`);
+      const res = await axios.get(API_ENDPOINTS.USER_LEVEL_STATUS(phone));
       if (res.data.status === "success") {
         if (res.data.levelStatus.medium.unlocked) {
           setIsUnlocked(true);
@@ -32,7 +33,7 @@ export default function MediumLessonsPage() {
 
   const fetchLessons = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user/lessons/medium/${phone}`);
+      const res = await axios.get(API_ENDPOINTS.USER_LESSONS("medium", phone));
       if (res.data.status === "success") {
         setLessons(res.data.lessons);
       }

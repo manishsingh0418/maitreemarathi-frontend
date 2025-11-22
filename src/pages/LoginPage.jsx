@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ArrowLeft } from "lucide-react";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function Login() {
   const [phone, setPhone] = useState("");
@@ -12,7 +13,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/login", {
+      const res = await axios.post(API_ENDPOINTS.LOGIN, {
         phone,
         password,
       });

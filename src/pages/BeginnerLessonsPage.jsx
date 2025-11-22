@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout";
 import axios from "axios";
+import { API_ENDPOINTS } from "../config/api";
 
 export default function BeginnerLessonsPage() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function BeginnerLessonsPage() {
 
   const fetchLessons = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user/lessons/beginner/${phone}`);
+      const res = await axios.get(API_ENDPOINTS.USER_LESSONS("beginner", phone));
       if (res.data.status === "success") {
         setLessons(res.data.lessons);
       }

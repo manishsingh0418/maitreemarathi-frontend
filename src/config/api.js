@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // API Endpoints
 export const API_ENDPOINTS = {
@@ -23,6 +23,9 @@ export const API_ENDPOINTS = {
   ADMIN_STATS: `${API_BASE_URL}/api/admin/stats`,
   ADMIN_UPDATE_PASSWORD: (id) => `${API_BASE_URL}/api/admin/users/${id}/password`,
   ADMIN_DELETE_USER: (id) => `${API_BASE_URL}/api/admin/users/${id}`,
+  ADMIN_REDEMPTIONS: `${API_BASE_URL}/api/admin/redemptions`,
+  ADMIN_UPDATE_REDEMPTION_STATUS: (id) => `${API_BASE_URL}/api/admin/redemptions/${id}/status`,
+  ADMIN_UPDATE_WALLET: (id) => `${API_BASE_URL}/api/admin/users/${id}/wallet`,
   
   // User
   USER_LESSONS: (level, phone) => `${API_BASE_URL}/api/user/lessons/${level}/${phone}`,
@@ -31,6 +34,10 @@ export const API_ENDPOINTS = {
   USER_SUBMIT_QUIZ: `${API_BASE_URL}/api/user/submit-quiz`,
   USER_LEVEL_STATUS: (phone) => `${API_BASE_URL}/api/user/level-status/${phone}`,
   USER_PROGRESS: (phone) => `${API_BASE_URL}/api/user/progress/${phone}`,
+  USER_REDEMPTIONS: (phone) => `${API_BASE_URL}/api/user/redemptions/${phone}`,
+  USER_REQUEST_REDEMPTION: `${API_BASE_URL}/api/user/request-redemption`,
+  USER_FORGOT_PASSWORD: `${API_BASE_URL}/api/user/forgot-password`,
+  USER_RESET_PASSWORD: `${API_BASE_URL}/api/user/reset-password`,
   
   // Payment
   PAYMENT: `${API_BASE_URL}/payment`,
